@@ -27,7 +27,6 @@ RUN chown -R www-data:www-data /var/www/hackazon/assets/config
 RUN chmod 755 /start.sh
 RUN chmod 755 /etc/apache2/foreground.sh
 RUN a2enmod rewrite 
-RUN mkdir /var/log/supervisor/
 
 EXPOSE 80
 CMD ["/bin/bash", "/start.sh"]
