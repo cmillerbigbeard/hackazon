@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER Brad Parker <brad@parker1723.com>
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nano mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql  php5-ldap supervisor unzip
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nano mysql-client mysql-server apache2 libapache2-mod-php5 php5 pwgen python-setuptools vim-tiny php5-mysql php5-gd php5-ldap supervisor unzip
 
 # setup hackazon
 ADD ./scripts/start.sh /start.sh
@@ -27,6 +27,7 @@ RUN chown -R www-data:www-data /var/www/hackazon/assets/config
 RUN chmod 755 /start.sh
 RUN chmod 755 /etc/apache2/foreground.sh
 RUN a2enmod rewrite 
+RUN service apache2 restart
 
 EXPOSE 80
 CMD ["/bin/bash", "/start.sh"]
