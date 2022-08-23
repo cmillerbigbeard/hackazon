@@ -2,7 +2,11 @@ FROM debian
 MAINTAINER Chris Miller <millerch@gmail.com>
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nano mysql-client mysql-server apache2 libapache2-mod-php5 php5 pwgen python-setuptools vim-tiny php5-mysql php5-gd php5-ldap supervisor unzip
+RUN apt install software-properties-common ca-certificates lsb-release apt-transport-https 
+RUN sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+RUN wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add - 
+RUN apt update
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nano mysql-client mysql-server apache2 php5.6 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql php5-gd php5-ldap supervisor unzip
 
 # setup hackazon
 ADD ./scripts/start.sh /start.sh
