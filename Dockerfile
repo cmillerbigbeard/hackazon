@@ -2,7 +2,7 @@ FROM debian
 MAINTAINER Chris Miller <millerch@gmail.com>
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get -y install software-properties-common ca-certificates lsb-release apt-transport-https wget
+RUN apt-get -y install software-properties-common ca-certificates lsb-release apt-transport-https wget gnupg2
 RUN sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 RUN wget -qO - https://packages.sury.org/php/apt.gpg | apt-key add - 
 RUN apt-get update
