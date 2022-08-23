@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER Brad Parker <brad@parker1723.com>
+FROM debian
+MAINTAINER Chris Miller <millerch@gmail.com>
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nano mysql-client mysql-server apache2 libapache2-mod-php5 php5 pwgen python-setuptools vim-tiny php5-mysql php5-gd php5-ldap supervisor unzip
