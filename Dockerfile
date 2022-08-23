@@ -2,9 +2,9 @@ FROM debian
 MAINTAINER Chris Miller <millerch@gmail.com>
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get -y install software-properties-common ca-certificates lsb-release apt-transport-https 
+RUN apt-get -y install software-properties-common ca-certificates lsb-release apt-transport-https wget
 RUN sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-RUN wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add - 
+RUN wget -qO - https://packages.sury.org/php/apt.gpg | apt-key add - 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nano mysql-client mysql-server apache2 php5.6 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql php5-gd php5-ldap supervisor unzip
 
