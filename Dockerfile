@@ -6,7 +6,7 @@ RUN apt-get -y install software-properties-common ca-certificates lsb-release ap
 RUN sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 RUN wget -qO - https://packages.sury.org/php/apt.gpg | apt-key add - 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nano default-mysql-client default-mysql-server apache2 php5.6 php5.6-bcmath libapache2-mod-php5.6 pwgen python-setuptools vim-tiny php5.6-mysql php5.6-gd php5.6-ldap supervisor unzip
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nano default-mysql-client sudo tcpdump default-mysql-server xml-core apache2 php5.6 php5.6-xml php5.6-bcmath php5.6-mbstring pip libreoffice-sdbc-hsqldb libdbd-mysql-perl libapache2-mod-php5.6 pwgen python-setuptools vim-tiny php5.6-imagick php5.6-mysql php5.6-gd php5.6-ldap supervisor unzip
 
 # setup hackazon
 ADD ./scripts/start.sh /start.sh
